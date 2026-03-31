@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Drama App</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      background: #0f0f0f;
+      color: white;
+      font-family: sans-serif;
+    }
+
+    .header {
+      text-align: center;
+      padding: 15px;
+      background: #1c1c1c;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      padding: 10px;
+    }
+
+    .card {
+      background: #1c1c1c;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .card img {
+      width: 100%;
+    }
+
+    .card p {
+      padding: 8px;
+      font-size: 14px;
+    }
+
+    .vip {
+      background: gold;
+      color: black;
+      padding: 3px 6px;
+      font-size: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="header">🎬 Drama Hub</div>
+
+<div class="grid">
+  <div class="card" onclick="play('Drama VIP')">
+    <img src="https://via.placeholder.com/300x200">
+    <p>Drama VIP <span class="vip">VIP</span></p>
+  </div>
+
+  <div class="card" onclick="play('Drama Gratis')">
+    <img src="https://via.placeholder.com/300x200">
+    <p>Drama Gratis</p>
+  </div>
+</div>
+
+<script>
+  const tg = window.Telegram.WebApp;
+  tg.expand();
+
+  function play(judul) {
+    alert("Kamu pilih: " + judul);
+  }
+</script>
+
+</body>
+</html>
