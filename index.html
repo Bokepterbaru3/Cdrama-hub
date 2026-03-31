@@ -1,40 +1,109 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Drama App</title>
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini App Keren</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      background: #0f0f0f;
-      color: white;
-      font-family: Arial;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(-45deg, #ff6ec4, #7873f5, #42e695, #3bb2b8);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #fff;
     }
 
-    .header {
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 400px;
+      width: 90%;
       text-align: center;
-      padding: 15px;
-      font-size: 20px;
-      font-weight: bold;
-      background: #1c1c1c;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      padding: 10px;
+    h1 {
+      margin-bottom: 25px;
+      font-size: 24px;
+      font-weight: 600;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
     }
 
-    .card {
-      background: #1c1c1c;
-      border-radius: 10px;
-      overflow: hidden;
+    button {
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+      border: none;
+      padding: 15px 25px;
+      border-radius: 12px;
+      margin: 10px 0;
       cursor: pointer;
-      transition: 0.2s;
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      width: 100%;
     }
+
+    button:hover {
+      background: rgba(255,255,255,0.5);
+      transform: scale(1.05);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    }
+
+    .output {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      background: rgba(0,0,0,0.2);
+      min-height: 50px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to Mini App Keren! ✨</h1>
+    <button id="btn1">🚀 Action 1</button>
+    <button id="btn2">🔥 Action 2</button>
+    <div class="output" id="output">Hasil akan muncul di sini...</div>
+  </div>
+
+  <script>
+    const output = document.getElementById('output');
+
+    document.getElementById('btn1').addEventListener('click', () => {
+      output.textContent = "Kamu menekan Action 1! 🚀";
+    });
+
+    document.getElementById('btn2').addEventListener('click', () => {
+      output.textContent = "Kamu menekan Action 2! 🔥";
+    });
+
+    // Telegram Web App API
+    if (window.Telegram?.WebApp) {
+      const tg = window.Telegram.WebApp;
+      tg.expand();
+      tg.MainButton.text = "Kirim ke Bot";
+      tg.MainButton.onClick(() => {
+        tg.sendData("Data dikirim dari Mini App Keren");
+      });
+    }
+  </script>
+</body>
+</html>    }
 
     .card:hover {
       transform: scale(0.97);
