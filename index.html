@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>C-Drama App</title>
+<title>Drama China VIP</title>
 
 <style>
 body {
@@ -11,118 +11,85 @@ body {
   font-family: Arial;
   background: #0f172a;
   color: white;
+  text-align: center;
 }
 
 .header {
   padding: 15px;
-  font-size: 20px;
-  font-weight: bold;
-  text-align: center;
   background: #1e293b;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  padding: 10px;
+  font-size: 20px;
 }
 
 .card {
   background: #1e293b;
+  margin: 15px;
+  padding: 15px;
   border-radius: 10px;
-  overflow: hidden;
+}
+
+button {
+  width: 90%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
   cursor: pointer;
 }
 
-.card img {
-  width: 100%;
-}
-
-.card p {
-  padding: 8px;
-  font-size: 14px;
+.free {
+  background: #38bdf8;
+  color: black;
 }
 
 .vip {
   background: gold;
   color: black;
-  padding: 3px 6px;
-  font-size: 10px;
-  border-radius: 5px;
-  position: absolute;
-  margin: 5px;
 }
 
-.player {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: black;
-  z-index: 999;
-}
-
-iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-.close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: red;
-  padding: 8px;
-  border-radius: 5px;
-  cursor: pointer;
-}
 </style>
-
 </head>
 
 <body>
 
-<div class="header">🎬 Drama China Hot</div>
+<div class="header">🎬 Drama China Viral</div>
 
-<div class="grid">
+<div class="card">
+  <h3>CEO Nikahi Cewek Miskin?! 😱</h3>
+  <p>Episode lanjutannya makin panas 🔥</p>
 
-  <div class="card" onclick="play('https://www.youtube.com/embed/dQw4w9WgXcQ')">
-    <div class="vip">VIP</div>
-    <img src="https://via.placeholder.com/300x200">
-    <p>Drama 1 Episode 1</p>
-  </div>
+  <button class="free" onclick="freeAccess()">
+    🎬 Tonton Gratis (Iklan)
+  </button>
 
-  <div class="card" onclick="play('https://www.youtube.com/embed/dQw4w9WgXcQ')">
-    <img src="https://via.placeholder.com/300x200">
-    <p>Drama 2 Episode 1</p>
-  </div>
-
-</div>
-
-<div class="player" id="player">
-  <div class="close" onclick="closePlayer()">X</div>
-  <iframe id="video"></iframe>
+  <button class="vip" onclick="vipAccess()">
+    💎 Unlock VIP
+  </button>
 </div>
 
 <script>
-function play(url) {
-  document.getElementById("player").style.display = "block";
-  document.getElementById("video").src = url;
+
+// ===== GANTI LINK IKLAN DI SINI =====
+function freeAccess() {
+  window.location.href = "https://link-iklan-kamu.com";
 }
 
-function closePlayer() {
-  document.getElementById("player").style.display = "none";
-  document.getElementById("video").src = "";
+// ===== SISTEM VIP =====
+const tg = window.Telegram?.WebApp;
+
+// GANTI ID VIP
+const vipUsers = [123456789];
+
+function vipAccess() {
+  const userId = tg?.initDataUnsafe?.user?.id;
+
+  if (vipUsers.includes(userId)) {
+    alert("✅ VIP aktif!\n\nMasuk sini:\nhttps://t.me/channelvipkamu");
+  } else {
+    alert("🔒 Khusus VIP\n\nKlik beli VIP ya!");
+  }
 }
 
-// Telegram WebApp
-if (window.Telegram?.WebApp) {
-  Telegram.WebApp.expand();
-}
 </script>
 
 </body>
