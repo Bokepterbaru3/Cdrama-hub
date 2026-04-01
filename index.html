@@ -1,281 +1,81 @@
-git init
-git add index.html
-git commit -m "Add mini app"
-git branch -M main
-git remote add origin https://github.com/USERNAME/mini-app-keren.git
-git push -u origin main    }
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini App</title>
 
-    h1 {
-      margin-bottom: 25px;
-      font-size: 24px;
-      font-weight: 600;
-      text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      text-align: center;
+      background: rgba(0,0,0,0.3);
+      padding: 25px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 350px;
     }
 
     button {
-      background: rgba(255,255,255,0.2);
-      color: #fff;
-      border: none;
-      padding: 15px 25px;
-      border-radius: 12px;
-      margin: 10px 0;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: 600;
-      transition: all 0.3s ease;
       width: 100%;
-    }
-
-    button:hover {
-      background: rgba(255,255,255,0.5);
-      transform: scale(1.05);
-      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-    }
-
-    .output {
-      margin-top: 20px;
-      padding: 15px;
+      padding: 12px;
+      margin-top: 10px;
+      border: none;
       border-radius: 10px;
-      background: rgba(0,0,0,0.2);
-      min-height: 50px;
-      font-weight: 500;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .btn1 { background: #00c6ff; color: black; }
+    .btn2 { background: #f7971e; color: black; }
+
+    .hasil {
+      margin-top: 15px;
+      padding: 10px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 10px;
     }
   </style>
 </head>
+
 <body>
-  <div class="container">
-    <h1>Welcome to Mini App Keren! ✨</h1>
-    <button id="btn1">🚀 Action 1</button>
-    <button id="btn2">🔥 Action 2</button>
-    <div class="output" id="output">Hasil akan muncul di sini...</div>
+
+  <div class="box">
+    <h2>Mini App 🔥</h2>
+
+    <button class="btn1" onclick="aksi1()">Action 1</button>
+    <button class="btn2" onclick="aksi2()">Action 2</button>
+
+    <div class="hasil" id="hasil">
+      Hasil akan muncul di sini
+    </div>
   </div>
 
   <script>
-    const output = document.getElementById('output');
+    function aksi1() {
+      document.getElementById("hasil").innerText = "Kamu klik Action 1 🚀";
+    }
 
-    document.getElementById('btn1').addEventListener('click', () => {
-      output.textContent = "Kamu menekan Action 1! 🚀";
-    });
+    function aksi2() {
+      document.getElementById("hasil").innerText = "Kamu klik Action 2 🔥";
+    }
 
-    document.getElementById('btn2').addEventListener('click', () => {
-      output.textContent = "Kamu menekan Action 2! 🔥";
-    });
-
-    // Telegram Web App API (opsional)
+    // Telegram WebApp
     if (window.Telegram?.WebApp) {
-      const tg = window.Telegram.WebApp;
+      let tg = window.Telegram.WebApp;
       tg.expand();
-      tg.MainButton.text = "Kirim ke Bot";
-      tg.MainButton.onClick(() => {
-        tg.sendData("Data dikirim dari Mini App Keren");
-      });
     }
   </script>
-</body>
-</html>    }
-
-    h1 {
-      margin-bottom: 25px;
-      font-size: 24px;
-      font-weight: 600;
-      text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
-    }
-
-    button {
-      background: rgba(255,255,255,0.2);
-      color: #fff;
-      border: none;
-      padding: 15px 25px;
-      border-radius: 12px;
-      margin: 10px 0;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      width: 100%;
-    }
-
-    button:hover {
-      background: rgba(255,255,255,0.5);
-      transform: scale(1.05);
-      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-    }
-
-    .output {
-      margin-top: 20px;
-      padding: 15px;
-      border-radius: 10px;
-      background: rgba(0,0,0,0.2);
-      min-height: 50px;
-      font-weight: 500;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Welcome to Mini App Keren! ✨</h1>
-    <button id="btn1">🚀 Action 1</button>
-    <button id="btn2">🔥 Action 2</button>
-    <div class="output" id="output">Hasil akan muncul di sini...</div>
-  </div>
-
-  <script>
-    const output = document.getElementById('output');
-
-    document.getElementById('btn1').addEventListener('click', () => {
-      output.textContent = "Kamu menekan Action 1! 🚀";
-    });
-
-    document.getElementById('btn2').addEventListener('click', () => {
-      output.textContent = "Kamu menekan Action 2! 🔥";
-    });
-
-    // Telegram Web App API
-    if (window.Telegram?.WebApp) {
-      const tg = window.Telegram.WebApp;
-      tg.expand();
-      tg.MainButton.text = "Kirim ke Bot";
-      tg.MainButton.onClick(() => {
-        tg.sendData("Data dikirim dari Mini App Keren");
-      });
-    }
-  </script>
-</body>
-</html>    }
-
-    .card:hover {
-      transform: scale(0.97);
-    }
-
-    .card img {
-      width: 100%;
-    }
-
-    .card p {
-      padding: 8px;
-      font-size: 14px;
-    }
-
-    .vip {
-      background: gold;
-      color: black;
-      padding: 3px 6px;
-      font-size: 10px;
-      border-radius: 5px;
-    }
-
-    .player {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: black;
-      z-index: 999;
-    }
-
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: red;
-      padding: 8px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style>
-</head>
-
-<body>
-
-<div class="header">🎬 Drama Hub</div>
-
-<div class="grid">
-
-  <div class="card" onclick="play('https://www.youtube.com/embed/dQw4w9WgXcQ')">
-    <img src="https://via.placeholder.com/300x200">
-    <p>Drama VIP <span class="vip">VIP</span></p>
-  </div>
-
-  <div class="card" onclick="play('https://www.youtube.com/embed/ysz5S6PUM-U')">
-    <img src="https://via.placeholder.com/300x200">
-    <p>Drama Gratis</p>
-  </div>
-
-</div>
-
-<div class="player" id="player">
-  <div class="close" onclick="closePlayer()">❌</div>
-  <iframe id="video"></iframe>
-</div>
-
-<script>
-  const tg = window.Telegram.WebApp;
-  tg.expand();
-
-  function play(url) {
-    document.getElementById("player").style.display = "block";
-    document.getElementById("video").src = url;
-  }
-
-  function closePlayer() {
-    document.getElementById("player").style.display = "none";
-    document.getElementById("video").src = "";
-  }
-</script>
-
-</body>
-</html>
-    .card img {
-      width: 100%;
-    }
-
-    .card p {
-      padding: 8px;
-      font-size: 14px;
-    }
-
-    .vip {
-      background: gold;
-      color: black;
-      padding: 3px 6px;
-      font-size: 10px;
-      border-radius: 5px;
-    }
-  </style>
-</head>
-
-<body>
-
-<div class="header">🎬 Drama Hub</div>
-
-<div class="grid">
-  <div class="card" onclick="play('Drama VIP')">
-    <img src="https://via.placeholder.com/300x200">
-    <p>Drama VIP <span class="vip">VIP</span></p>
-  </div>
-
-  <div class="card" onclick="play('Drama Gratis')">
-    <img src="https://via.placeholder.com/300x200">
-    <p>Drama Gratis</p>
-  </div>
-</div>
-
-<script>
-  const tg = window.Telegram.WebApp;
-  tg.expand();
-
-  function play(judul) {
-    alert("Kamu pilih: " + judul);
-  }
-</script>
 
 </body>
 </html>
