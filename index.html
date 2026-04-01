@@ -1,81 +1,129 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mini App</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C-Drama App</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0f172a;
+  color: white;
+}
 
-    .box {
-      text-align: center;
-      background: rgba(0,0,0,0.3);
-      padding: 25px;
-      border-radius: 15px;
-      width: 90%;
-      max-width: 350px;
-    }
+.header {
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  background: #1e293b;
+}
 
-    button {
-      width: 100%;
-      padding: 12px;
-      margin-top: 10px;
-      border: none;
-      border-radius: 10px;
-      font-size: 16px;
-      cursor: pointer;
-    }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 10px;
+}
 
-    .btn1 { background: #00c6ff; color: black; }
-    .btn2 { background: #f7971e; color: black; }
+.card {
+  background: #1e293b;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
 
-    .hasil {
-      margin-top: 15px;
-      padding: 10px;
-      background: rgba(255,255,255,0.2);
-      border-radius: 10px;
-    }
-  </style>
+.card img {
+  width: 100%;
+}
+
+.card p {
+  padding: 8px;
+  font-size: 14px;
+}
+
+.vip {
+  background: gold;
+  color: black;
+  padding: 3px 6px;
+  font-size: 10px;
+  border-radius: 5px;
+  position: absolute;
+  margin: 5px;
+}
+
+.player {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  z-index: 999;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: red;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+</style>
+
 </head>
 
 <body>
 
-  <div class="box">
-    <h2>Mini App 🔥</h2>
+<div class="header">🎬 Drama China Hot</div>
 
-    <button class="btn1" onclick="aksi1()">Action 1</button>
-    <button class="btn2" onclick="aksi2()">Action 2</button>
+<div class="grid">
 
-    <div class="hasil" id="hasil">
-      Hasil akan muncul di sini
-    </div>
+  <div class="card" onclick="play('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+    <div class="vip">VIP</div>
+    <img src="https://via.placeholder.com/300x200">
+    <p>Drama 1 Episode 1</p>
   </div>
 
-  <script>
-    function aksi1() {
-      document.getElementById("hasil").innerText = "Kamu klik Action 1 🚀";
-    }
+  <div class="card" onclick="play('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+    <img src="https://via.placeholder.com/300x200">
+    <p>Drama 2 Episode 1</p>
+  </div>
 
-    function aksi2() {
-      document.getElementById("hasil").innerText = "Kamu klik Action 2 🔥";
-    }
+</div>
 
-    // Telegram WebApp
-    if (window.Telegram?.WebApp) {
-      let tg = window.Telegram.WebApp;
-      tg.expand();
-    }
-  </script>
+<div class="player" id="player">
+  <div class="close" onclick="closePlayer()">X</div>
+  <iframe id="video"></iframe>
+</div>
+
+<script>
+function play(url) {
+  document.getElementById("player").style.display = "block";
+  document.getElementById("video").src = url;
+}
+
+function closePlayer() {
+  document.getElementById("player").style.display = "none";
+  document.getElementById("video").src = "";
+}
+
+// Telegram WebApp
+if (window.Telegram?.WebApp) {
+  Telegram.WebApp.expand();
+}
+</script>
 
 </body>
 </html>
